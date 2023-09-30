@@ -1,29 +1,28 @@
-package com.yourpackage.controller;
+package com.example.springapp.controller;
 
-import com.yourpackage.model.Medicine;
+import com.example.springapp.model.Medicine;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/medicines")
 public class MedicineController {
-    private Map<Integer, Medicine> medicineDatabase = new HashMap<>();
+    private final Map<Integer, Medicine> medicineDatabase = new HashMap<>();
     private int nextMedicineId = 1;
 
-    @PostMapping
+    @PostMapping("/")
     public boolean addMedicine(@RequestBody Medicine medicine) {
-        medicine.setMedicineId(nextMedicineId++);
-        medicineDatabase.put(medicine.getMedicineId(), medicine);
+        medicine.setId(nextMedicineId++);
+        medicineDatabase.put(medicine.getId(), medicine);
         return true;
     }
 
-    @PutMapping("/{medicineId}")
-    public Medicine updateMedicine(@PathVariable int medicineId, @RequestBody Medicine updatedMedicine) {
-        if (medicineDatabase.containsKey(medicineId)) {
-            Medicine existingMedicine = medicineDatabase.get(medicineId);
-            existingMedicine.setMedicineName(updatedMedicine.getMedicineName());
+    @PutMapping("/{id}")
+    public Medicine updateMedicine(@PathVariable int id, @RequestBody Medicine updatedMedicine) {
+        if (medicineDatabase.containsKey(id)) {
+            Medicine existingMedicine = medicineDatabase.get(id);
+            existingMedicine.setName(updatedMedicine.getName());
             existingMedicine.setPrice(updatedMedicine.getPrice());
             existingMedicine.setQuantity(updatedMedicine.getQuantity());
             existingMedicine.setDescription(updatedMedicine.getDescription());

@@ -1,9 +1,9 @@
-package com.yourpackage.model;
+package com.example.springapp.model;
 
 public class Medicine {
-    private int medicineId;
-    private String medicineName;
-    private float price;
+    private int id;
+    private String name;
+    private double price;
     private int quantity;
     private String description;
 
@@ -11,35 +11,36 @@ public class Medicine {
         // Default constructor
     }
 
-    public Medicine(int medicineId, String medicineName, float price, int quantity, String description) {
-        this.medicineId = medicineId;
-        this.medicineName = medicineName;
+    public Medicine(int id, String name, double price, int quantity, String description) {
+        this.id = id;
+        this.name = name;
         this.price = price;
         this.quantity = quantity;
         this.description = description;
     }
 
-    public int getMedicineId() {
-        return medicineId;
+    // Getters and setters
+    public int getId() {
+        return id;
     }
 
-    public void setMedicineId(int medicineId) {
-        this.medicineId = medicineId;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getMedicineName() {
-        return medicineName;
+    public String getName() {
+        return name;
     }
 
-    public void setMedicineName(String medicineName) {
-        this.medicineName = medicineName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
